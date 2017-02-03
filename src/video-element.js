@@ -1,6 +1,7 @@
-JSMpeg.VideoElement = (function(){ "use strict";
+'use strict';
 
-var VideoElement = function(element) {	
+module.exports = JSMpeg => {
+var VideoElement = JSMpeg.VideoElement = function(element) {
 	var url = element.dataset.url;
 
 	if (!url) {
@@ -155,7 +156,5 @@ VideoElement.UNMUTE_BUTTON =
 		'</g>' +
 	'</svg>';
 
-return VideoElement;
-
-})();
+};
 

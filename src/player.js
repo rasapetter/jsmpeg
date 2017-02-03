@@ -1,6 +1,8 @@
-JSMpeg.Player = (function(){ "use strict";
+'use strict';
 
-var Player = function(url, options) {
+module.exports = JSMpeg => {
+
+var Player = JSMpeg.Player = function(url, options) {
 	this.options = options || {};
 
 	if (url.match(/^wss?:\/\//)) {
@@ -237,7 +239,4 @@ Player.prototype.updateForStaticFile = function() {
 	}
 };
 
-return Player;
-
-})();
-
+};

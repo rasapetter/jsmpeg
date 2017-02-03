@@ -1,6 +1,7 @@
-JSMpeg.Source.AjaxProgressive = (function(){ "use strict";
+'use strict';
+module.exports = JSMpeg => {
 
-var AjaxProgressiveSource = function(url, options) {
+var AjaxProgressiveSource = JSMpeg.Source.AjaxProgressive = function(url, options) {
 	this.url = url;
 	this.destination = null;
 	this.request = null;
@@ -115,8 +116,6 @@ AjaxProgressiveSource.prototype.onChunkLoad = function(data) {
 	}
 };
 
-return AjaxProgressiveSource;
-
-})();
+};
 
 

@@ -1,6 +1,8 @@
-JSMpeg.Renderer.Canvas2D = (function(){ "use strict";
+'use strict';
 
-var CanvasRenderer = function(options) {
+module.exports = JSMpeg => {
+
+var CanvasRenderer = JSMpeg.Renderer.Canvas2D = function(options) {
 	this.canvas = options.canvas || document.createElement('canvas');
 	this.width = this.canvas.width;
 	this.height = this.canvas.height;
@@ -108,8 +110,6 @@ CanvasRenderer.prototype.YCbCrToRGBA = function(y, cb, cr, rgba) {
 	}
 };
 
-return CanvasRenderer;
-
-})();
+};
 
 

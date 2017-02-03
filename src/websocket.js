@@ -1,6 +1,8 @@
-JSMpeg.Source.WebSocket = (function(){ "use strict";
+'use strict';
 
-var WSSource = function(url, options) {
+module.exports = JSMpeg => {
+
+var WSSource = JSMpeg.Source.WebSocket = function(url, options) {
 	this.url = url;
 	this.socket = null;	
 
@@ -60,7 +62,4 @@ WSSource.prototype.onMessage = function(ev) {
 	}
 };
 
-return WSSource;
-
-})();
-
+};

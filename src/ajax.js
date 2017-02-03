@@ -1,6 +1,8 @@
-JSMpeg.Source.Ajax = (function(){ "use strict";
+'use strict';
 
-var AjaxSource = function(url, options) {
+module.exports = JSMpeg => {
+
+var AjaxSource = JSMpeg.Source.Ajax = function(url, options) {
 	this.url = url;
 	this.destination = null;
 	this.request = null;
@@ -54,8 +56,5 @@ AjaxSource.prototype.onLoad = function(data) {
 	}
 };
 
-return AjaxSource;
-
-})();
-
+};
 

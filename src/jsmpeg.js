@@ -4,22 +4,28 @@
 // This sets up the JSMpeg "Namespace". The object is empty apart from the Now()
 // utility function and the automatic CreateVideoElements() after DOMReady.
 var JSMpeg = {
+	AudioOutput: {},
+	Decoder: {},
+	Demuxer: {},
+	Source: {},
+	Renderer: {}
+};
 
 	// The Player sets up the connections between source, demuxer, decoders,
 	// renderer and audio output. It ties everything together, is responsible
 	// of scheduling decoding and provides some convenience methods for
 	// external users.
-	Player: null,
+	require('./player')(JSMpeg);
 
 	// A Video Element wraps the Player, shows HTML controls to start/pause
 	// the video and handles Audio unlocking on iOS. VideoElements can be
 	// created directly in HTML using the <div class="jsmpeg"/> tag.
-	VideoElement: null,
-	
+	require('./video-element')(JSMpeg);
+
 	// The BitBuffer wraps a Uint8Array and allows reading an arbitrary number
 	// of bits at a time. On writing, the BitBuffer either expands its
 	// internal buffer (for static files) or deletes old data (for streaming).
-	BitBuffer: null,
+	require('./buffer')(JSMpeg);
 
 	// A Source provides raw data from HTTP, a WebSocket connection or any
 	// other mean. Sources must support the following API:
@@ -30,7 +36,9 @@ var JSMpeg = {
 	//   .established - boolean, true after connection is established
 	//   .completed - boolean, true if the source is completely loaded
 	//   .progress - float 0-1
-	Source: {}, 
+	require('./ajax')(JSMpeg);
+	require('./ajax-progressive')(JSMpeg);
+	require('./websocket')(JSMpeg);
 
 	// A Demuxer may sit between a Source and a Decoder. It separates the
 	// incoming raw data into Video, Audio and other Streams. API:
@@ -38,7 +46,8 @@ var JSMpeg = {
 	//   .write(buffer)
 	//   .currentTime – float, in seconds
 	//   .startTime - float, in seconds
-	Demuxer: {},
+	require('./ts')(JSMpeg);
+	require('./player')(JSMpeg);
 
 	// A Decoder accepts an incoming Stream of raw Audio or Video data, buffers
 	// it and upon `.decode()` decodes a single frame of data. Video decoders
@@ -51,7 +60,9 @@ var JSMpeg = {
 	//   .seek(time)
 	//   .currentTime - float, in seconds
 	//   .startTime - float, in seconds
-	Decoder: {},
+	require('./decoder')(JSMpeg);
+	require('./mpeg1')(JSMpeg);
+	require('./mp2')(JSMpeg);
 
 	// A Renderer accepts raw YCrCb data in 3 separate buffers via the render()
 	// method. Renderers typically convert the data into the RGBA color space
@@ -59,7 +70,8 @@ var JSMpeg = {
 	// be conceivable. API:
 	//   .render(y, cr, cb) - pixel data as Uint8Arrays
 	//   .enabled - wether the renderer does anything upon receiving data
-	Renderer: {},
+	require('./canvas2d')(JSMpeg);
+	require('./webgl')(JSMpeg);
 
 	// Audio Outputs accept raw Stero PCM data in 2 separate buffers via the
 	// play() method. Outputs typically play the audio on the user's device.
@@ -68,21 +80,20 @@ var JSMpeg = {
 	//   .stop()
 	//   .enqueuedTime - float, in seconds
 	//   .enabled - wether the output does anything upon receiving data
-	AudioOutput: {}, 
+	require('./webaudio')(JSMpeg);
 
-	Now: function() {
-		return window.performance 
+	JSMpeg.Now = function() {
+		return window.performance
 			? window.performance.now() / 1000
 			: Date.now() / 1000;
 	},
 
-	CreateVideoElements: function() {
+	JSMpeg.CreateVideoElements = function() {
 		var elements = document.querySelectorAll('.jsmpeg');
 		for (var i = 0; i < elements.length; i++) {
 			new JSMpeg.VideoElement(elements[i]);
 		}
 	}
-};
 
 // Automatically create players for all found <div class="jsmpeg"/> elements.
 if (document.readyState === 'complete') {

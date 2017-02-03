@@ -1,9 +1,11 @@
-JSMpeg.Decoder.MP2Audio = (function(){ "use strict";
+'use strict';
+
+module.exports = JSMpeg => {
 
 // Based on kjmp2 by Martin J. Fiedler
 // http://keyj.emphy.de/kjmp2/
 
-var MP2 = function(options) {
+var MP2 = JSMpeg.Decoder.MP2Audio = function(options) {
 	JSMpeg.Decoder.Base.call(this, options);
 
 	var bufferSize = options.audioBufferSize || 128*1024;
@@ -676,7 +678,5 @@ MP2.QUANT_TAB = [
 	{levels: 65535, group: 0, bits: 16}   // 17
 ];
 
-return MP2;
-
-})();
+};
 

@@ -1,6 +1,8 @@
-JSMpeg.BitBuffer = (function(){ "use strict";
+'use strict';
 
-var BitBuffer = function(bufferOrLength, mode) {
+module.exports = JSMpeg => {
+
+var BitBuffer = JSMpeg.BitBuffer = function(bufferOrLength, mode) {
 	if (typeof(bufferOrLength) === 'object') {
 		this.bytes = (bufferOrLength instanceof Uint8Array)
 			? bufferOrLength 
@@ -189,8 +191,5 @@ BitBuffer.MODE = {
 	EXPAND: 2
 };
 
-return BitBuffer;
-
-})();
-
+};
 

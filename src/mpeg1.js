@@ -1,9 +1,10 @@
-JSMpeg.Decoder.MPEG1Video = (function(){ "use strict";
+'use strict';
+module.exports = JSMpeg => {
 
 // Inspired by Java MPEG-1 Video Decoder and Player by Zoltan Korandi 
 // https://sourceforge.net/projects/javampeg1video/
 
-var MPEG1 = function(options) {
+var MPEG1 = JSMpeg.Decoder.MPEG1Video = function(options) {
 	JSMpeg.Decoder.Base.call(this, options);
 
 	var bufferSize = options.videoBufferSize || 512*1024;
@@ -1668,7 +1669,5 @@ MPEG1.START = {
 	USER_DATA: 0xB2
 };
 
-return MPEG1;
-
-})();
+};
 

@@ -1,6 +1,8 @@
-JSMpeg.AudioOutput.WebAudio = (function() { "use strict";
+'use strict';
 
-var WebAudioOut = function(options) {
+module.exports = JSMpeg => {
+
+var WebAudioOut = JSMpeg.AudioOutput.WebAudio = function(options) {
 	this.context = WebAudioOut.CachedContext =
 		WebAudioOut.CachedContext ||
 		new (window.AudioContext || window.webkitAudioContext)();
@@ -125,7 +127,4 @@ WebAudioOut.IsSupported = function() {
 
 WebAudioOut.CachedContext = null;
 
-return WebAudioOut;
-
-})();
-
+};

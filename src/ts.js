@@ -1,6 +1,8 @@
-JSMpeg.Demuxer.TS = (function(){ "use strict";
+'use strict';
 
-var TS = function(options) {
+module.exports = JSMpeg => {
+
+var TS = JSMpeg.Demuxer.TS = function(options) {
 	this.bits = null;
 	this.leftoverBytes = null;
 
@@ -183,8 +185,6 @@ TS.STREAM = {
 	DIRECTORY: 0xFF
 };
 
-return TS;
-
-})();
+};
 
 
