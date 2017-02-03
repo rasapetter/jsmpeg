@@ -1,8 +1,7 @@
 /*! jsmpeg v1.0 | (c) Dominic Szablewski | MIT license */
 
 
-// This sets up the JSMpeg "Namespace". The object is empty apart from the Now()
-// utility function and the automatic CreateVideoElements() after DOMReady.
+// This sets up the JSMpeg "Namespace".
 var JSMpeg = {
 	AudioOutput: {},
 	Decoder: {},
@@ -87,20 +86,5 @@ var JSMpeg = {
 			? window.performance.now() / 1000
 			: Date.now() / 1000;
 	},
-
-	JSMpeg.CreateVideoElements = function() {
-		var elements = document.querySelectorAll('.jsmpeg');
-		for (var i = 0; i < elements.length; i++) {
-			new JSMpeg.VideoElement(elements[i]);
-		}
-	}
-
-// Automatically create players for all found <div class="jsmpeg"/> elements.
-if (document.readyState === 'complete') {
-	JSMpeg.CreateVideoElements();
-}
-else {
-	document.addEventListener('DOMContentLoaded', JSMpeg.CreateVideoElements);
-}
 
 module.exports = JSMpeg;
