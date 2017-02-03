@@ -7,7 +7,12 @@ var JSMpeg = {
 	Decoder: {},
 	Demuxer: {},
 	Source: {},
-	Renderer: {}
+	Renderer: {},
+	Now: function() {
+		return window.performance
+			? window.performance.now() / 1000
+			: Date.now() / 1000;
+	},
 };
 
 	// The Player sets up the connections between source, demuxer, decoders,
@@ -80,11 +85,5 @@ var JSMpeg = {
 	//   .enqueuedTime - float, in seconds
 	//   .enabled - wether the output does anything upon receiving data
 	require('./webaudio')(JSMpeg);
-
-	JSMpeg.Now = function() {
-		return window.performance
-			? window.performance.now() / 1000
-			: Date.now() / 1000;
-	},
 
 module.exports = JSMpeg;
