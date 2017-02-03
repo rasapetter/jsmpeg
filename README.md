@@ -76,6 +76,15 @@ A `JSMpeg.Player` instance supports the following methods and properties:
 - `.currentTime` – get or set the current playback position in seconds
 
 
+## Build instruction
+
+1) Install the build dependencies using `npm install`
+
+2) Build the package using `npm run build`
+
+3) Find the results in `/build/jsmpeg.min.js`
+
+
 ## Encoding Video/Audio for JSMpeg
 
 JSMpeg only supports playback of MPEG-TS containers with the MPEG1 Video Codec and the MP2 Audio Codec. The Video Decoder does not handle B-Frames correctly (though no modern encoder seems to use these by default anyway) and the width of the video has to be a multiple of 2.
