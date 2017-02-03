@@ -92,3 +92,4 @@ else {
 	document.addEventListener('DOMContentLoaded', JSMpeg.CreateVideoElements);
 }
 
+module.exports = JSMpeg;
