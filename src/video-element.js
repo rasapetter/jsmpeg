@@ -41,7 +41,7 @@ var VideoElement = JSMpeg.VideoElement = function(element) {
 		opacity: '0.7',
 		cursor: 'pointer'
 	});
-	this.container.appendChild(this.playButton);	
+	this.container.appendChild(this.playButton);
 
 	// Parse the data-options - we try to decode the values as json. This way
 	// we can get proper boolean and number values. If JSON.parse() fails,
@@ -82,8 +82,8 @@ var VideoElement = JSMpeg.VideoElement = function(element) {
 		this.playButton.style.display = 'none';
 	}
 
-	// Set up the unlock audio buton for iOS devices. iOS only allows us to 
-	// play audio after a user action has initiated playing. For autoplay or 
+	// Set up the unlock audio buton for iOS devices. iOS only allows us to
+	// play audio after a user action has initiated playing. For autoplay or
 	// streaming players we set up a muted speaker icon as the button. For all
 	// others, we can simply use the play button.
 	if (this.player.audioOut && !this.player.audioOut.unlocked) {
@@ -98,7 +98,7 @@ var VideoElement = JSMpeg.VideoElement = function(element) {
 				width: '75px', height: '75px',
 				margin: 'auto',
 				opacity: '0.7',
-				cursor: 'pointer'				
+				cursor: 'pointer'
 			});
 			this.container.appendChild(this.unmuteButton);
 			unlockAudioElement = this.unmuteButton;
@@ -138,7 +138,7 @@ VideoElement.prototype.onClick = function(ev) {
 	}
 };
 
-VideoElement.PLAY_BUTTON = 
+VideoElement.PLAY_BUTTON =
 	'<svg style="max-width: 75px; max-height: 75px;" ' +
 		'viewBox="0 0 200 200" alt="Play video">' +
 		'<circle cx="100" cy="100" r="90" fill="none" '+
@@ -146,7 +146,7 @@ VideoElement.PLAY_BUTTON =
 		'<polygon points="70, 55 70, 145 145, 100" fill="#fff"/>' +
 	'</svg>';
 
-VideoElement.UNMUTE_BUTTON = 
+VideoElement.UNMUTE_BUTTON =
 	'<svg style="max-width: 75px; max-height: 75px;" viewBox="0 0 75 75">' +
 		'<polygon class="audio-speaker" stroke="none" fill="#fff" '+
 			'points="39,13 22,28 6,28 6,47 21,47 39,62 39,13"/>' +
@@ -157,4 +157,3 @@ VideoElement.UNMUTE_BUTTON =
 	'</svg>';
 
 };
-

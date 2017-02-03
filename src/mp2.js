@@ -18,7 +18,7 @@ var MP2 = JSMpeg.Decoder.MP2Audio = function(options) {
 	this.left = new Float32Array(1152);
 	this.right = new Float32Array(1152);
 	this.sampleRate = 44100;
-	
+
 	this.D = new Float32Array(1024);
 	this.D.set(MP2.SYNTHESIS_WINDOW, 0);
 	this.D.set(MP2.SYNTHESIS_WINDOW, 512);
@@ -30,7 +30,7 @@ var MP2 = JSMpeg.Decoder.MP2Audio = function(options) {
 	this.scaleFactorInfo = [new Uint8Array(32), new Uint8Array(32)];
 	this.scaleFactor = [new Array(32), new Array(32)];
 	this.sample = [new Array(32), new Array(32)];
-	
+
 	for (var j = 0; j < 2; j++) {
 		for (var i = 0; i < 32; i++) {
 			this.scaleFactor[j][i] = [0, 0, 0];
@@ -121,7 +121,7 @@ MP2.prototype.decodeFrame = function(left, right) {
 	var bitrate = MP2.BIT_RATE[bitrateIndex],
 		sampleRate = MP2.SAMPLE_RATE[sampleRateIndex],
 		frameSize = ((144000 * bitrate / sampleRate) + padding)|0;
-	
+
 
 	// Prepare the quantizer table lookups
 	var tab3 = 0;
@@ -151,7 +151,7 @@ MP2.prototype.decodeFrame = function(left, right) {
 	}
 
 	for (var sb = bound; sb < sblimit; sb++) {
-		this.allocation[0][sb] = 
+		this.allocation[0][sb] =
 			this.allocation[1][sb] =
 			this.readAllocation(sb, tab3);
 	}
@@ -380,7 +380,7 @@ MP2.MatrixTransform = function(s, ss, d, dp) {
 	t07 = t01 + t09; t09 = (t01 - t09) * 1.30656296488;
 	t01 = t11 + t07; t07 = (t11 - t07) * 0.707106781187;
 	t11 = t13 + t09; t13 = (t13 - t09) * 0.707106781187;
-	t11 += t13; t01 += t11; 
+	t11 += t13; t01 += t11;
 	t11 += t07; t07 += t13;
 	t09 = t31 + t17; t31 = (t31 - t17) * 0.509795579104;
 	t17 = t29 + t19; t29 = (t29 - t19) * 0.601344886935;
@@ -397,7 +397,7 @@ MP2.MatrixTransform = function(s, ss, d, dp) {
 	t09 = t31 + t21; t31 = (t31 - t21) * 0.707106781187;
 	t09 += t31;	t29 += t09;	t09 += t23;	t23 += t31;
 	t17 += t29;	t29 += t25;	t25 += t09;	t09 += t27;
-	t27 += t23;	t23 += t19; t19 += t31;	
+	t27 += t23;	t23 += t19; t19 += t31;
 	t21 = t02 + t32; t02 = (t02 - t32) * 0.502419286188;
 	t32 = t04 + t30; t04 = (t04 - t30) * 0.52249861494;
 	t30 = t06 + t28; t28 = (t06 - t28) * 0.566944034816;
@@ -419,7 +419,7 @@ MP2.MatrixTransform = function(s, ss, d, dp) {
 	t14 = t32 + t24; t24 = (t32 - t24) * 1.30656296488;
 	t32 = t18 + t14; t14 = (t18 - t14) * 0.707106781187;
 	t18 = t26 + t24; t24 = (t26 - t24) * 0.707106781187;
-	t18 += t24; t32 += t18; 
+	t18 += t24; t32 += t18;
 	t18 += t14; t26 = t14 + t24;
 	t14 = t02 + t16; t02 = (t02 - t16) * 0.509795579104;
 	t16 = t04 + t20; t04 = (t04 - t20) * 0.601344886935;
@@ -644,7 +644,7 @@ MP2.QUANT_LUT_STEP_3 = [
 		0x45,0x45,0x45,0x45,
 		0x34,0x34,0x34,0x34,0x34,0x34,0x34,
 		0x24,0x24,0x24,0x24,0x24,0x24,0x24,0x24,0x24,0x24,
-					   0x24,0x24,0x24,0x24,0x24,0x24,0x24,0x24,0x24	
+					   0x24,0x24,0x24,0x24,0x24,0x24,0x24,0x24,0x24
 	]
 ];
 
@@ -679,4 +679,3 @@ MP2.QUANT_TAB = [
 ];
 
 };
-

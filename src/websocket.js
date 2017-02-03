@@ -4,7 +4,7 @@ module.exports = JSMpeg => {
 
 var WSSource = JSMpeg.Source.WebSocket = function(url, options) {
 	this.url = url;
-	this.socket = null;	
+	this.socket = null;
 
 	this.callbacks = {connect: [], data: []};
 	this.destination = null;
@@ -51,7 +51,7 @@ WSSource.prototype.onOpen = function() {
 WSSource.prototype.onClose = function() {
 	if (this.shouldAttemptReconnect) {
 		setTimeout(function(){
-			this.start();	
+			this.start();
 		}.bind(this), this.reconnectInterval*1000);
 	}
 };

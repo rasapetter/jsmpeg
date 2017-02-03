@@ -16,8 +16,8 @@ var WebGLRenderer = JSMpeg.Renderer.WebGL = function(options) {
 		antialias: false
 	};
 
-	this.gl = 
-		this.canvas.getContext('webgl', contextCreateOptions) || 
+	this.gl =
+		this.canvas.getContext('webgl', contextCreateOptions) ||
 		this.canvas.getContext('experimental-webgl', contextCreateOptions);
 
 	if (!this.gl) {
@@ -140,13 +140,13 @@ WebGLRenderer.prototype.render = function(y, cb, cr) {
 		h2 = h >> 1;
 
 	// In some browsers WebGL doesn't like Uint8ClampedArrays (this is a bug
-	// and should be fixed soon-ish), so we have to create a Uint8Array view 
+	// and should be fixed soon-ish), so we have to create a Uint8Array view
 	// for each plane.
 	if (this.shouldCreateUnclampedViews) {
 		y = new Uint8Array(y.buffer),
 		cb = new Uint8Array(cb.buffer),
-		cr = new Uint8Array(cr.buffer);	
-	}	
+		cr = new Uint8Array(cr.buffer);
+	}
 
 	this.updateTexture(gl.TEXTURE0, this.textureY, w, h, y);
 	this.updateTexture(gl.TEXTURE1, this.textureCb, w2, h2, cb);
@@ -160,7 +160,7 @@ WebGLRenderer.prototype.updateTexture = function(unit, texture, w, h, data) {
 	gl.activeTexture(unit);
 	gl.bindTexture(gl.TEXTURE_2D, texture);
 	gl.texImage2D(
-		gl.TEXTURE_2D, 0, gl.LUMINANCE, w, h, 0, 
+		gl.TEXTURE_2D, 0, gl.LUMINANCE, w, h, 0,
 		gl.LUMINANCE, gl.UNSIGNED_BYTE, data
 	);
 }
@@ -171,15 +171,15 @@ WebGLRenderer.IsSupported = function() {
 			return false;
 		}
 
-		var canvas = document.createElement('canvas'); 
+		var canvas = document.createElement('canvas');
 		return !!(
-			canvas.getContext('webgl') || 
+			canvas.getContext('webgl') ||
 			canvas.getContext('experimental-webgl')
 		);
 	}
 	catch (err) {
 		return false;
-	} 
+	}
 };
 
 WebGLRenderer.SHADER = {
@@ -227,4 +227,3 @@ WebGLRenderer.SHADER = {
 };
 
 };
-

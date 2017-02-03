@@ -23,7 +23,7 @@ CanvasRenderer.prototype.resize = function(width, height) {
 };
 
 CanvasRenderer.prototype.renderProgress = function(progress) {
-	var 
+	var
 		w = this.canvas.width,
 		h = this.canvas.height,
 		ctx = this.context;
@@ -49,7 +49,7 @@ CanvasRenderer.prototype.YCbCrToRGBA = function(y, cb, cr, rgba) {
 	// I wish we could use 32bit writes to the RGBA buffer instead of writing
 	// each byte separately, but we need the automatic clamping of the RGBA
 	// buffer.
-	
+
 	var w = ((this.width + 15) >> 4) << 4,
 		w2 = w >> 1;
 
@@ -111,5 +111,3 @@ CanvasRenderer.prototype.YCbCrToRGBA = function(y, cb, cr, rgba) {
 };
 
 };
-
-

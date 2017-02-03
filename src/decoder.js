@@ -75,7 +75,7 @@ BaseDecoder.prototype.advanceDecodedTime = function(seconds) {
 		// to advance the decoded time manually and can instead sync it exactly
 		// to the PTS.
 		if (
-			newTimestampIndex !== -1 && 
+			newTimestampIndex !== -1 &&
 			newTimestampIndex !== this.timestampIndex
 		) {
 			this.timestampIndex = newTimestampIndex;
@@ -92,5 +92,3 @@ BaseDecoder.prototype.getCurrentTime = function() {
 };
 
 };
-
-

@@ -21,7 +21,7 @@ AjaxSource.prototype.start = function() {
 
 	this.request.onreadystatechange = function() {
 		if (
-			this.request.readyState === this.request.DONE && 
+			this.request.readyState === this.request.DONE &&
 			this.request.status === 200
 		) {
 			this.onLoad(this.request.response);
@@ -57,4 +57,3 @@ AjaxSource.prototype.onLoad = function(data) {
 };
 
 };
-

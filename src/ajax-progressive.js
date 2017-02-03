@@ -60,19 +60,19 @@ AjaxProgressiveSource.prototype.abort = function() {
 AjaxProgressiveSource.prototype.loadNextChunk = function() {
 	var start = this.loadedSize,
 		end = Math.min(this.loadedSize + this.chunkSize-1, this.fileSize-1);
-	
+
 	if (start >= this.fileSize) {
 		this.completed = true;
 		return;
 	}
-	
+
 	this.isLoading = true;
 	this.loadStartTime = JSMpeg.Now();
 	this.request = new XMLHttpRequest();
 
-	this.request.onreadystatechange = function() {		
+	this.request.onreadystatechange = function() {
 		if (
-			this.request.readyState === this.request.DONE && 
+			this.request.readyState === this.request.DONE &&
 			this.request.status >= 200 && this.request.status < 300
 		) {
 			this.onChunkLoad(this.request.response);
@@ -84,7 +84,7 @@ AjaxProgressiveSource.prototype.loadNextChunk = function() {
 			}
 		}
 	}.bind(this);
-	
+
 	if (start === 0) {
 		this.request.onprogress = this.onProgress.bind(this);
 	}
@@ -117,5 +117,3 @@ AjaxProgressiveSource.prototype.onChunkLoad = function(data) {
 };
 
 };
-
-

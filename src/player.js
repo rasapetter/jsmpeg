@@ -173,7 +173,7 @@ Player.prototype.updateForStreaming = function() {
 				this.audioOut.resetEnqueuedTime();
 				this.audioOut.enabled = false;
 			}
-			decoded = this.audio.decode();		
+			decoded = this.audio.decode();
 		} while (decoded);
 		this.audioOut.enabled = true;
 	}
@@ -189,7 +189,7 @@ Player.prototype.updateForStaticFile = function() {
 	if (this.audio && this.audio.canPlay) {
 		// Do we have to decode and enqueue some more audio data?
 		while (
-			!notEnoughData && 
+			!notEnoughData &&
 			this.audio.decodedTime - this.audio.currentTime < 0.25
 		) {
 			notEnoughData = !this.audio.decode();

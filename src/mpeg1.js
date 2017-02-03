@@ -1,7 +1,7 @@
 'use strict';
 module.exports = JSMpeg => {
 
-// Inspired by Java MPEG-1 Video Decoder and Player by Zoltan Korandi 
+// Inspired by Java MPEG-1 Video Decoder and Player by Zoltan Korandi
 // https://sourceforge.net/projects/javampeg1video/
 
 var MPEG1 = JSMpeg.Decoder.MPEG1Video = function(options) {
@@ -1670,4 +1670,3 @@ MPEG1.START = {
 };
 
 };
-
